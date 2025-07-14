@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "115bb9f3-d24d-49d1-9f0f-79f625878249",
+		"name": "USER - MANAGEMENT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45777462",
+		"_collection_link": "https://paw-4687843.postman.co/workspace/paw's-Workspace~578828ef-8377-49fb-8dc8-400c43ac8f01/collection/45777462-115bb9f3-d24d-49d1-9f0f-79f625878249?action=share&source=collection_link&creator=45777462"
+	},
+	"item": [
+		{
+			"name": "https://reqres.in/api/users(https://reqres.in/api/users)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\n        if (JSON.setEnableBigInt) {\n          JSON.setEnableBigInt(undefined);\n        }\n        pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n      "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://reqres.in/api/users(https://reqres.in/api/users)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\n        if (JSON.setEnableBigInt) {\n          JSON.setEnableBigInt(undefined);\n        }\n        pm.test(\"Status code is 201\", function () {\n    pm.response.to.have.status(201);\n});\n\npm.test(\"Response body should contain the correct name\", function () {\n    const responseData = pm.response.json();\n    pm.expect(responseData.name).to.eql(\"Budi\");\n});\n// Mengambil ID dari response body dan menyimpannya ke dalam variable\nconst responseData = pm.response.json();\npm.collectionVariables.set(\"userId\", responseData.id);\n      "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Budi\",\n    \"job\": \"QA Engineer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://reqres.in/api/users/{{userId}}(https://reqres.in/api/users/{{userId}})",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\n        if (JSON.setEnableBigInt) {\n          JSON.setEnableBigInt(undefined);\n        }\n        pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Job title should be updated\", function () {\n    const responseData = pm.response.json();\n    pm.expect(responseData.job).to.eql(\"Senior QA Engineer\");\n});\n      "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Budi\",\n    \"job\": \"Senior QA Engineer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://reqres.in/api/users/{{userId}}(https://reqres.in/api/users/{{userId}})",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\n        if (JSON.setEnableBigInt) {\n          JSON.setEnableBigInt(undefined);\n        }\n        pm.test(\"Status should be 204\", function(){\n    pm.response.to.have.status(204);\n});\n      "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": "70",
+			"type": "string"
+		},
+		{
+			"key": "BASE_URL",
+			"value": "https://dev.your-api-server.com",
+			"type": "string"
+		}
+	]
+}
